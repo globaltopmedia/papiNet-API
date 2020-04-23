@@ -23,59 +23,59 @@ A release requires a vote by papiNet CWG members within the voting period.
 
 First of all, you need to install Git. For an installation on Windows, you can just go to <https://git-scm.com/download/win> and the download will start automatically. If you want to install Git on other OS, please follow the instructions at <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>.
 
-Once you have install Git on your computer, you can start **Git Bash** and type
+Once you have install Git on your computer, you can start **Git Bash** and type:
 
-  ```command
-  USER@MACHINE MINGW64 ~
-  $ git --version
-  git version 2.26.0.windows.1
-  ```
+```
+USER@MACHINE MINGW64 ~
+$ git --version
+git version 2.26.0.windows.1
+```
 
 Then, you should configure your Git with the following commands:
 
-  ```command
-  USER@MACHINE MINGW64 ~
-  $ git config --global user.name "[Your first name] [Your last name]"
+```
+USER@MACHINE MINGW64 ~
+$ git config --global user.name "[Your first name] [Your last name]"
 
-  USER@MACHINE MINGW64 ~
-  $ git config --global user.email "[Your email used to sign up to GitHub.com]"
-  ```
+USER@MACHINE MINGW64 ~
+$ git config --global user.email "[Your email used to sign up to GitHub.com]"
+```
 
 You can verify that your configuration is correct using the following commands:
 
-  ```command
-  USER@MACHINE MINGW64 ~
-  $ git config --global --show-origin user.name
-  file:C:/Users/USER/.gitconfig John Doe
+```
+USER@MACHINE MINGW64 ~
+$ git config --global --show-origin user.name
+file:C:/Users/USER/.gitconfig John Doe
 
-  USER@MACHINE MINGW64 ~
-  $ git config --global --show-origin user.email
-  file:C:/Users/USER/.gitconfig john.doe@mail.com
-  ```
+USER@MACHINE MINGW64 ~
+$ git config --global --show-origin user.email
+file:C:/Users/USER/.gitconfig john.doe@mail.com
+```
 
 Now, we can clone the **papiNet-API** repository from GitHub:
 
-  ```command
-  USER@MACHINE MINGW64 ~
-  $ git clone https://github.com/papinet/papiNet-API.git
-  Cloning into 'papiNet-API'...
-  remote: Enumerating objects: 17, done.
-  remote: Counting objects: 100% (17/17), done.
-  remote: Compressing objects: 100% (15/15), done.
-  remote: Total 17 (delta 4), reused 6 (delta 0), pack-reused 0
-  Receiving objects: 100% (17/17), 7.34 KiB | 2.45 MiB/s, done.
-  Resolving deltas: 100% (4/4), done.
-  ```
+```
+USER@MACHINE MINGW64 ~
+$ git clone https://github.com/papinet/papiNet-API.git
+Cloning into 'papiNet-API'...
+remote: Enumerating objects: 17, done.
+remote: Counting objects: 100% (17/17), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 17 (delta 4), reused 6 (delta 0), pack-reused 0
+Receiving objects: 100% (17/17), 7.34 KiB | 2.45 MiB/s, done.
+Resolving deltas: 100% (4/4), done.
+```
 
 It create a new directory with the same name as the repository `papiNet-API`:
 
-  ```command
-  USER@MACHINE MINGW64 ~
-  $ cd papiNet-API/
+```
+USER@MACHINE MINGW64 ~
+$ cd papiNet-API/
 
-  USER@MACHINE MINGW64 ~/papiNet-API (master)
-  $
-  ```
+USER@MACHINE MINGW64 ~/papiNet-API (master)
+$
+```
 
 You should now locate the work branch representing the version you would like to work on. Assuming that the current version of the standard is 1.0.0, you should then see the following three work branches:
 
@@ -85,104 +85,152 @@ You should now locate the work branch representing the version you would like to
 
 You get the list of available branches with the following command:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (master)
-  $ git branch -a
-  * master
-    remotes/origin/HEAD -> origin/master
-    remotes/origin/v1.0.1
-    remotes/origin/v1.1.0
-    remotes/origin/v2.0.0
-  ```
+```
+USER@MACHINE MINGW64 ~/papiNet-API (master)
+$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/v1.0.1
+  remotes/origin/v1.1.0
+  remotes/origin/v2.0.0
+```
 
 Assuming that you want to add a file, you should switch to the `v1.1.0` branch:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (master)
-  $ git checkout v1.1.0
-  Switched to a new branch 'v1.1.0'
-  Branch 'v1.1.0' set up to track remote branch 'v1.1.0' from 'origin'.
+```
+USER@MACHINE MINGW64 ~/papiNet-API (master)
+$ git checkout v1.1.0
+Switched to a new branch 'v1.1.0'
+Branch 'v1.1.0' set up to track remote branch 'v1.1.0' from 'origin'.
 
-  USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
-  $
-  ```
+USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
+$
+```
 
 Notice that the Git Batch prompt nicely tells you on which branch you are.
 
 You cannot work directly on the branch `v1.1.0`. Changes to this branch MUST be done only via Pull Request (PR), which will requires the approval of three maintainers.
 
-So, you need to create your own working branch from the branch `v1.1.0`:
+So, you need to create your own working branch from the branch `v1.1.0`. We recommand you to use `[Your first name]-v1.1.0` as your branch name:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
-  $ git branch john-v1.1.0
+```
+USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
+$ git branch john-v1.1.0
 
-  USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
-  $ git checkout john-v1.1.0
-  Switched to branch 'john-v1.1.0'
+USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
+$ git checkout john-v1.1.0
+Switched to branch 'john-v1.1.0'
 
-  USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
-  $
-  ```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$
+```
 
 Let's assume that the root folder of the repository only contains the following two files:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
-  $ ls
-  LICENSE  README.md
-  ```
+```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ ls
+LICENSE  README.md
+```
 
 Before you do anything, you will have:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
-  $ git status
-  On branch john-v1.1.0
-  nothing to commit, working tree clean
-  ```
+```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git status
+On branch john-v1.1.0
+nothing to commit, working tree clean
+```
 
-Now, if you add/create the `MAINTAINERS.md` file:
+From there, if you add/create the `MAINTAINERS.md` file:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
-  $ ls
-  LICENSE  MAINTAINERS.md  README.md
-  ```
+```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ ls
+LICENSE  MAINTAINERS.md  README.md
+```
 
 You will have:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
-  $ git status
-  On branch john-v1.1.0
-  Your branch is up to date with 'origin/v1.1.0'.
+```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git status
+On branch john-v1.1.0
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        MAINTAINERS.md
 
-  Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-          MAINTAINERS.md
-
-  nothing added to commit but untracked files present (use "git add" to track)
-  ```
+nothing added to commit but untracked files present (use "git add" to track)
+```
 
 Then, you should add this new file `MAINTAINERS.md` to the *Staging Area*:
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
-  $ git add .
+```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git add .
 
-  USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
-  $ git status
-  On branch v0.1.0
-  Your branch is up to date with 'origin/v1.1.0'.
-
-  Changes to be committed:
-    (use "git restore --staged <file>..." to unstage)
-          new file:   MAINTAINERS.md
-  ```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git status
+On branch john-v1.1.0
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   MAINTAINERS.md
+```
 
 And commit your change(s):
 
-  ```command
-  USER@MACHINE MINGW64 ~/papiNet-API (v1.1.0)
-  $ git commit -m "Add the file MAINTAINERS.md"
+```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git commit -m "Add the file MAINTAINERS.md"
+[john-v1.1.0 7379cba] Add the file MAINTAINERS.md
+ 1 file changed, 3 insertions(+)
+ create mode 100644 MAINTAINERS.md
+
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git status
+On branch john-v1.1.0
+nothing to commit, working tree clean
+
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git log
+commit 7379cba11f6f07245ff995d453ed90b2da57beac (HEAD -> john-v1.1.0)
+Author: John Doe <john.doe@mail.com>
+Date:   Thu Apr 23 21:22:11 2020 +0200
+
+    Add the file MAINTAINERS.md
+
+commit e79001150002b7af40f61cbae7ffd6671029f55c
+Author: John Doe <john.doe@mail.com>
+Date:   Wed Apr 22 15:56:50 2020 +0200
+
+    Initial commit
+```
+
+Finally, you should just push your commit(s) to GitHub:
+
+```
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git push
+fatal: The current branch john-v1.1.0 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin john-v1.1.0
+
+USER@MACHINE MINGW64 ~/papiNet-API (john-v1.1.0)
+$ git push --set-upstream origin john-v1.1.0
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 395 bytes | 19.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'john-v1.1.0' on GitHub by visiting:
+remote:      https://github.com/papinet/papiNet-API/pull/new/john-v1.1.0
+remote:
+To https://github.com/papinet/papiNet-API.git
+ * [new branch]      john-v1.1.0 -> john-v1.1.0
+Branch 'john-v1.1.0' set up to track remote branch 'john-v1.1.0' from 'origin'.
+```
+
+The branch `john-v1.1.0` is now copied to GitHub and you can start a Pull Request (PR) towards the `v1.1.0` branch.
