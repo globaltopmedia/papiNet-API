@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: papiNet API
+  description: This is the papiNet API.
+  termsOfService: http://www.papinet.io/terms-of-service
+  contact:
+    name: papiNet API CWG
+    url: http://www.papinet.io/support
+    email: support@papinet.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.1.0
+servers:
+- url: https://api.papinet.io
+  description: papiNet Mock Server
+paths:
+  '/items':
+    get:
+      summary: Get items
+      description: Get a list of all the items.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemObject'
+components:
+  schemas:
+    ItemObject:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
