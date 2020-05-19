@@ -5,7 +5,7 @@
 A `thingy` is _a person or thing whose name one has forgotten, does not know, or does not wish to mention_.
 
 In order to manage a `thingy`, we will define the following API endpoints:
-* `post /thingies` **creates** a `thingies`
+* `post /thingies` **creates** a `thingy`
 * `get /thingies` **lists** all `thingies`, with a minimum of detailed information from each `thingy`
 * `get /thingies/{thingiesId}` **gets the details** of a specific `thingy`
 * `put /thingies/{thingiesId}` **updates** a specific `thingy`, using a full representation of the `thingy`
