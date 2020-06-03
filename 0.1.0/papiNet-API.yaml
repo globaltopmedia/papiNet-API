@@ -1,0 +1,123 @@
+openapi: 3.0.3
+info:
+  title: papiNet API
+  description: This is the papiNet API.
+  termsOfService: http://www.papinet.org/footer/legal-notice/
+  contact:
+    name: papiNet API Central Work Group
+    url: http://www.papinet.org/footer/legal-notice/#/about-us/organization/ajax.html
+    email: NoSupportYet@papinet.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.1.0
+paths:
+  '/locations':
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Locations'
+        '404':
+          description: Not Found
+  '/locations/{locationId}/opening-hours':
+    get:
+      parameters:
+        - in: path
+          name: locationId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpeningHours'
+        '404':
+          description: Not Found
+components:
+  schemas:
+    Location:
+      type: object
+      properties:
+        id:
+          type: string
+        iana:
+          type: string
+        gln:
+          type: number
+        externalIds:
+          type: array
+          items:
+            type: object
+            properties:
+              qualifier:
+                type: string
+              value:
+                type: string
+            required:
+              - qualifier
+              - value
+        name:
+          type: string
+        address:
+          type: array
+          items:
+            type: string
+        postalCode:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        coordinates:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+          required:
+            - latitude
+            - longitude
+      required:
+        - id
+        - name
+    Locations:
+      type: array
+      items:
+        $ref: '#/components/schemas/Location'
+    OpeningHours:
+      type: object
+      properties:
+        monday:
+          $ref: '#/components/schemas/TimeSlots'
+        tuesday:
+          $ref: '#/components/schemas/TimeSlots'
+        wednesday:
+          $ref: '#/components/schemas/TimeSlots'
+        thursday:
+          $ref: '#/components/schemas/TimeSlots'
+        friday:
+          $ref: '#/components/schemas/TimeSlots'
+        saturday:
+          $ref: '#/components/schemas/TimeSlots'
+        sunday:
+          $ref: '#/components/schemas/TimeSlots'
+    TimeSlots:
+      type: array
+      items:
+        type: object
+        properties:
+          from:
+            type: string
+          to:
+            type: string
+        required:
+          - from
+          - to
