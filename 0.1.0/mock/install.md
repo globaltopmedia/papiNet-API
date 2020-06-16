@@ -46,9 +46,15 @@ v12.18.0
 ~$ npm install
 ```
 
+3. Install the PM2 daemon process manager (that will help you manage and keep your application online 24/7) by typing the following command:
+
+```
+~$ sudo npm install pm2@latest -g
+```
+
 3. Start the mock by typing the following command:
 ```
-~$ npm start
+~$ pm2 start app.js
 ```
 
 4. Check that the mock is properly running by typing the following command:
