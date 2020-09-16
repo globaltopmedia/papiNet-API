@@ -11,4 +11,4 @@ The _Buyer_ requests to the _Supplier_ the list of all its _Orders_ which are st
 ## The Answer
 
 * The _UUID_ of the _Order_ created by the _Supplier_ when it received it from the _Buyer_.
-* Buyer Purchase Order Number
+
