@@ -19,7 +19,7 @@ A release requires a vote by papiNet CWG members within the voting period.
 * MINOR-level releases requires a super majority (>=66%) approval by papiNet CWG members within a voting period of 10 calendar days
 * MAJOR-level releases requires a super majority (>=66%) approval by papiNet CWG members within a voting period of 15 calendar days
 
-## Getting Started for papiNet CGW Members
+## Getting Started for papiNet CWG Members
 
 First of all, you need to install Git. For an installation on Windows, you can just go to <https://git-scm.com/download/win> and the download will start automatically. If you want to install Git on other OS, please follow the instructions at <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>.
 
